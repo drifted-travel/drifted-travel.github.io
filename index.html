@@ -64,6 +64,7 @@
       text-decoration: none;
       font-size: 1rem;
       transition: color 0.3s;
+      cursor: pointer;
     }
 
     nav a:hover {
@@ -141,6 +142,25 @@
       }
     }
   </style>
+  <script>
+    function loadSection(id) {
+      const sections = document.querySelectorAll("main section");
+      sections.forEach(section => section.style.display = "none");
+      const active = document.getElementById(id);
+      if (active) active.style.display = "block";
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      loadSection("services");
+      document.querySelectorAll("nav a").forEach(link => {
+        link.addEventListener("click", e => {
+          const id = link.getAttribute("href").substring(1);
+          loadSection(id);
+          e.preventDefault();
+        });
+      });
+    });
+  </script>
 </head>
 <body>
 
@@ -154,36 +174,43 @@
     </nav>
   </header>
 
-  <section id="services">
-    <h2>Services</h2>
-    <div class="services">
-      <div class="service-card">
-        <h3>Journee</h3>
-        <p>A ready-to-go, smartly curated itinerary for travelers who want ease without the research.</p>
+  <main>
+    <section id="services">
+      <h2>Services</h2>
+      <div class="services">
+        <div class="service-card">
+          <h3>Journee</h3>
+          <p>A ready-to-go, smartly curated itinerary for travelers who want ease without the research.</p>
+        </div>
+        <div class="service-card">
+          <h3>Journee⁺</h3>
+          <p>Fully personalized itineraries crafted with care using a detailed questionnaire to fit your vibe.</p>
+        </div>
+        <div class="service-card">
+          <h3>Journee<sup>∞</sup></h3>
+          <p>Unlimited, ongoing travel curation for nomads and deep explorers looking for next-level experiences.</p>
+        </div>
       </div>
-      <div class="service-card">
-        <h3>Journee⁺</h3>
-        <p>Fully personalized itineraries crafted with care using a detailed questionnaire to fit your vibe.</p>
-      </div>
-      <div class="service-card">
-        <h3>Journee<sup>∞</sup></h3>
-        <p>Unlimited, ongoing travel curation for nomads and deep explorers looking for next-level experiences.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="blogs">
-    <h2>Blogs</h2>
-    <p>
-      Discover stories, getaways, and guides that inspire your next drift. Dive into our journal of slow travel, hidden gems, and meaningful memories.
-    </p>
-  </section>
+    <section id="blogs" style="display:none">
+      <h2>Blogs</h2>
+      <p>
+        Discover stories, getaways, and guides that inspire your next drift. Dive into our journal of slow travel, hidden gems, and meaningful memories.
+      </p>
+    </section>
 
-  <footer id="contact">
+    <section id="contact" style="display:none">
+      <h2>Contact</h2>
+      <p>Connect with us through our social platforms below or drop us a message.</p>
+    </section>
+  </main>
+
+  <footer>
     <p>Connect with us</p>
     <div class="social-links">
       <a href="#" target="_blank">Instagram</a>
-      <a href="#" target="_blank">Twitter</a>
+      <a href="#" target="https://x.com/drifted_co_in">Twitter</a>
       <a href="#" target="_blank">LinkedIn</a>
     </div>
     <p style="margin-top: 1rem;">© 2025 Drifted. All rights reserved.</p>
